@@ -7,6 +7,14 @@ const canteenmenu = new mongoose.Schema({
 });
 
 
+
+//  module.exports={
+//     name: String,
+//     price: Number,
+//     description: String,
+//     id:String 
+//  };
+
+
 const Menu = mongoose.model('Menu', canteenmenu);
 module.exports = Menu;
-
