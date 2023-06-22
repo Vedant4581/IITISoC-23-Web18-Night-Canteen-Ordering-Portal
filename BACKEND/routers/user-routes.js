@@ -1,28 +1,41 @@
+const mongoose = require('mongoose');
+const bodyParser = require("body-parser")
+const ejs = require("ejs");
 const express = require("express")
-const {check} = require("express-validator")
-// const checkAuth = require("../middleware/auth-check")
+const path = require('path');
+
+
 const app = express.Router();
 
-app.get("/canteen", function (req, res) {
+const Menu = require("../model.js");
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+
+// ANSWERING A GET REQUEST
+app.get("/", function (req, res) {
     Menu.find({}).then((err, posts) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(posts);
-      }
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(posts);
+        }
     });
-  });
+});
 
 
-  app.get("/canteen/:nitem", function (req, res) {
+// ANSWERING A GET REQUEST
+app.get("/:nitem", function (req, res) {
     Menu.findOne({
-      name: req.params.nitem
+        name: req.params.nitem
     }).then((err, posts) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send("NO ARTICLE FOUND HERE");
-      }
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(posts);
+        }
     });
-  });
-  module.exports=app;
+});
+module.exports = app;
