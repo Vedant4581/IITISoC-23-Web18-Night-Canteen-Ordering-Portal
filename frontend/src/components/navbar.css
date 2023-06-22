@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 .without-bullet{
     list-style-type: none;
 }
@@ -70,7 +71,6 @@
     background-color: aliceblue;
     border: #F0A157;
 }
-
 
 @media (max-width:1080px){
     .main-nav{
