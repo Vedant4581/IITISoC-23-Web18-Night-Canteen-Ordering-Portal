@@ -1,8 +1,10 @@
-const mongoose = require('mongoose');
-const bodyParser = require("body-parser");
+// const {check} = require("express-validator")
+// const checkAuth = require("../middleware/auth-check")
 const path = require('path');
+const mongoose = require('mongoose');
+const bodyParser = require("body-parser")
 const ejs = require("ejs");
-const express = require("express");
+const express = require("express")
 const app = express.Router();
 
 
@@ -11,105 +13,32 @@ app.use(bodyParser.urlencoded({
 }));
 
 
+
+
+
 const Menu = require("../model.js");
+const contfood = require("../controllers/food-controller.js");
 
 // ANSWERING A GET REQUEST 
-app.get("/", function (req, res) {
-    Menu.find({}).then((err, posts) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send(posts);
-        }
-    });
-});
+app.get("/", contfood.foodget);
 
 // ANSWERING A POST REQUEST 
-app.post("/", function (req, res) {
-    const newitem = new Menu({
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-        id: req.body.id
-    });
-    // console.log(req.body);
-    newitem.save();
-});
+app.post("/", contfood.foodpost);
 
 // ANSWERING A GET REQUEST 
-app.get("/:nitem", function (req, res) {
-    Menu.findOne({
-        name: req.params.nitem
-    }).then((err, posts) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send(posts);
-        }
-    });
-});
+app.get("/:nitem", contfood.foodgetq);
 
 // ANSWERING A PUT REQUEST 
-app.put("/:nitem", function (req, res) {
-    Menu.updateOne(
-        { name: req.params.nitem },
-        {
-            $set: {
-                name: req.body.name,
-                price: req.body.price,
-                description: req.body.description,
-                id: req.body.id
-            }
-        },
-        { overwrite: true }).then(
-            function (err) {
-                if (err) {
-                    res.send(err);
-                } else {
-                    res.send("SUCCESSFULLY UPDATED");
-                }
-            }
-        );
-})
+app.put("/:nitem", contfood.foodput)
 
 // ANSWERING A PATCH REQUEST 
-app.patch("/:nitem", function (req, res) {
-    Menu.updateOne(
-        { name: req.params.nitem },
-        { $set: req.body }).then(
-            function (err) {
-                if (err) {
-                    res.send(err);
-                } else {
-                    res.send("SUCCESSFULLY UPDATED");
-                }
-            }
-        );
-});
+app.patch("/:nitem", contfood.foodpatch);
 
 // ANSWERING A DELETE REQUEST 
-app.delete("/:nitem", function (req, res) {
-    Menu.deleteOne({ name: req.params.nitem }).then(function (err) {
-        if (err) {
-            res.send("DELETED SUCCESSFULY");
-        } else {
-            res.send(err);
-        }
-    })
+app.delete("/:nitem", contfood.fooddeleteo);
 
 
-})
-
-app.delete("/", function (req, res) {
-    Menu.deleteMany({}).then(function (err) {
-        if (err) {
-            res.send("DELETED SUCCESSFULY");
-        } else {
-            res.send(err);
-        }
-    });
-
-
-});
+// ANSWERING A DELETE REQUEST 
+app.delete("/", contfood.fooddeletea);
 
 module.exports = app;
