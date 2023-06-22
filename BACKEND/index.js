@@ -1,4 +1,3 @@
-
 // IMPORTING REQUIRED MODULES
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser")
@@ -8,28 +7,31 @@ const path = require('path');
 const app = express();
 
 
+
 const foods = require("./routers/food-routes.js");
 const users = require("./routers/user-routes.js");
 
-
 app.use("/canteen/food", foods);
 app.use("/canteen/user", users);
-app.use(express.static("public"));
+
+
 
 
 // SELECTING THE PORT
 const port = 80;
-
 
 // IMPORTING SCHEMA OF FOOD ITEMS FROM "model.js"
 const Menu = require("./model.js");
 
 
 
+app.use(express.static("public"));
+
+
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
 
 main().catch(err => console.log(err));
 
@@ -46,6 +48,10 @@ async function main() {
 
 
 
+
+
+
+
 // DISPLAYING ALL FOOD ITEMS AVAILABLE IN OUR MENU
 const menuitems = Menu.find({}).then((err, posts) => {
   if (err) {
@@ -55,4 +61,5 @@ const menuitems = Menu.find({}).then((err, posts) => {
   }
 });
 console.log(menuitems);
+
 
