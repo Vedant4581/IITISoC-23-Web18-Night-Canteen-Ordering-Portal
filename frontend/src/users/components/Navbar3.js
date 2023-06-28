@@ -1,6 +1,9 @@
 import React from 'react'
 import './navbar.css'
+import { Link } from "react-router-dom";
 export default function Navbar3() {
+    
+
   return (
     <div>
       <nav className='main-nav'>
@@ -15,16 +18,16 @@ export default function Navbar3() {
         <div className='menu-link'>
             <ul>
                 <li className='without-bullet'>
-                    <a className='navbar-link' href='/'><button className='link-button'>Home</button></a>
+                    <Link className='navbar-link' to='/'><button className='link-button'>Home</button></Link>
                 </li>
                 <li className='without-bullet'>
-                    <a className='navbar-link' href='/'><button className='link-button'>Menu</button></a>
+                    <Link className='navbar-link' to='/'><button className='link-button'>Menu</button></Link>
                 </li>
                 <li className='without-bullet'>
-                    <a className='navbar-link' href='/'><button className='link-button'>About</button></a>
+                    <Link className='navbar-link' to='/'><button className='link-button'>About</button></Link>
                 </li>
                 <li className='without-bullet'>
-                    <a className='navbar-link' href='/'><button className='link-button'>Services</button></a>
+                    <Link className='navbar-link' to='/'><button className='link-button'>Services</button></Link>
                 </li>
             </ul>
 
@@ -32,20 +35,20 @@ export default function Navbar3() {
         {/*                         3rd part log in                                         */}
         <div className='login'>
             <ul>
-                <li className='without-bullet'><a href='/Login'><button className='user-button'>Log In</button></a></li>
-                <li className='without-bullet'><a href='/Login'><button className='user-button'>Sign In</button></a></li>
+                <li className='without-bullet'><Link to='/Login'><button className='user-button'>Log In</button></Link></li>
+                <li className='without-bullet'><Link to='/Login'><button className='user-button'>Sign In</button></Link></li>
             </ul>
             {/*                         ham berger menu start                               */}
             
         </div>
-        
+       
         <nav className="navbar ofc fixed-top media">
             <div className="container-fluid">
                     <a className="navbar-brand" href="/"><b>Night Canteen</b></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div className="offcanvas-header">
                         <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Night Canteen</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -53,22 +56,22 @@ export default function Navbar3() {
                     <div className="offcanvas-body">
                         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
+                            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Menu</a>
+                            <Link className="nav-link" to="/">Menu</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">About</a>
+                            <Link className="nav-link" to="/">About</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Services</a>
+                            <Link className="nav-link" to="/">Services</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Log In</a>
+                            <Link className='nav-link' to="/Login">Log In</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Sign In</a>
+                            <Link className="nav-link" to="/">Sign In</Link>
                         </li>
                         </ul>
                     </div>
