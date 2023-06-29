@@ -38,11 +38,8 @@ main().catch(err => console.log(err));
 
 // CONNECTING MONGOOSE AND MONGODB
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/canteen').then(() => {
-    console.log("Connected to Database");
-    app.listen(port);
-  }).catch(err => { console.log("Error in connecting to database"); console.log(err) });
-  console.log("WE ARE NOW CONNECTED");
+  await mongoose.connect('mongodb://127.0.0.1:27017/canteen');
+    console.log("WE ARE NOW CONNECTED");
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
 
@@ -62,4 +59,6 @@ const menuitems = Menu.find({}).then((err, posts) => {
 });
 console.log(menuitems);
 
-
+app.listen(port, () => {
+  console.log(`THE APPLICATION STARTED SUCCESSFULLY ON PORT ${port}`);
+});
